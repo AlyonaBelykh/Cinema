@@ -1,5 +1,6 @@
 import React from 'react';
 import {Select} from './SearchingSelectBox';
+import {Popular} from  './Popular';
 
 export class Search extends React.Component{
   constructor(props) {
@@ -25,6 +26,7 @@ export class Search extends React.Component{
         <Select/>
         <input  type="submit" value="Submit"/>
       </form>
+      <Popular/>
     </div>
     );
   }

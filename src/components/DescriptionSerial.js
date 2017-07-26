@@ -16,7 +16,6 @@ export class DescriptionSerial extends React.Component {
   searchByImbdId() {
     const id = this.props.match.params.id;
     api(serialPath + id).then(result => {
-      console.log(result)
       this.setState({data: result.data})
     });
   }
