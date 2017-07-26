@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Search} from './Search';
+import {Popular} from  './Popular';
 import './Fetch.css';
 import {api} from '../api';
 const searchMoviePath = '/search/movie';
@@ -12,7 +13,7 @@ export class Fetch extends React.Component {
   constructor(props) {
     super(props);
     this.loadData = this.loadData.bind(this);
-    this.state = {data: []}
+    this.state = {data: null}
   }
 
   loadData(event) {
@@ -37,6 +38,9 @@ export class Fetch extends React.Component {
       <div>
         <Search onSubmit={this.loadData}/>
         {
+          !this.state.data ?
+            <Popular/>
+            :
           this.state.data.map(item => {
               if (!item.name) {
                return(
