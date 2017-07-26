@@ -4,7 +4,6 @@ import {Video} from './Video.js';
 import './DescriptionSerial.css';
 const serialPath = '/tv/';
 const img = 'https://image.tmdb.org/t/p/w500';
-const apikey = '&apikey=ec6483bd';
 
 export class DescriptionSerial extends React.Component {
   constructor(props) {
@@ -24,7 +23,7 @@ export class DescriptionSerial extends React.Component {
     return (
       <div>
         <h1>Description</h1>
-        <img src={img+this.state.data.poster_path}></img>
+        <img src={img+this.state.data.poster_path} alt=""></img>
         <p>Title: {this.state.data.name}</p>
         <p>First air date: {this.state.data.first_air_date}</p>
         <p>Last air date: {this.state.data.last_air_date}</p>

@@ -21,7 +21,7 @@ export class Fetch extends React.Component {
     const film = event.target['film'].value;
     const selected = event.target['select'].value;
     const query = '&query=' + film;
-    selected == 'TVSerial' ?
+    selected === 'TVSerial' ?
       api(searchSerialPath, query).then(data => {
         this.setState({data: data.data.results})
       })
@@ -45,14 +45,24 @@ export class Fetch extends React.Component {
               if (!item.name) {
                return(
                  <figure>
-                  <Link to={'/descriptionMovie/' + item.id}><img src={img + item.poster_path} className="poster"></img></Link>
+                  <Link to={'/descriptionMovie/' + item.id}>
+                    <img src={img + item.poster_path} className="poster" alt=""></img>
+                  </Link>
+                   <Link to={'/favorites'+item.id}>
+                     <img src="favorites.png" className="favorite" alt=""></img>
+                   </Link>
                   <figcaption>{item.original_title}</figcaption>
                 </figure>
                )
               } else {
                 return(
                   <figure>
-                  <Link to={'/descriptionSerial/' + item.id}><img src={img + item.poster_path} className="poster"></img></Link>
+                    <Link to={'/descriptionSerial/' + item.id}>
+                      <img src={img + item.poster_path} className="poster" alt=""></img>
+                    </Link>
+                    <Link to={'/favorites'+item.id}>
+                      <img src="favorites.png" className="favorite" alt=""></img>
+                    </Link>
                   <figcaption>{item.name}</figcaption>
                 </figure>
                 )

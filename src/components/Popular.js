@@ -14,7 +14,6 @@ export class Popular extends React.Component {
 
   loadPopular() {
     api(popularMoviePath).then(response => {
-      console.log(response)
       this.setState({data: response.data.results})
     })
   }
@@ -25,7 +24,12 @@ export class Popular extends React.Component {
         {
           this.state.data.map(item =>
             <figure>
-              <Link to={'/descriptionMovie/' + item.id}><img src={img + item.poster_path} className="poster"></img></Link>
+              <Link to={'/descriptionMovie/' + item.id}>
+                <img src={img + item.poster_path} className="poster" alt=""></img>
+              </Link>
+              <Link to={'/favorites'+item.id}>
+                <img src="favorites.png" className="favorite" alt=""></img>
+              </Link>
               <figcaption>{item.original_title}</figcaption>
             </figure>
           )

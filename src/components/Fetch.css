@@ -1,7 +1,16 @@
 figure {
     display: inline-block;
 }
-.poster{
+.poster {
     width: 300px;
     height: 400px;
+    z-index:1;
+    top:0; left:0;
+}
+
+.favorite {
+    width: 25px;
+    height: 25px;
+    margin-left: -25px;
+    top:0; left:25px;
 }

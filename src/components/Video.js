@@ -20,7 +20,7 @@ export class Video extends React.Component {
       <div>
         {
           this.state.data.map(item =>
-          <iframe width="420" height="315" src ={"https://www.youtube.com/embed/" + item.key} allowFullScreen></iframe>
+          <iframe width="420" height="315" src ={"https://www.youtube.com/embed/" + item.key} allowFullScreen title="trailer"></iframe>
           )
         }
       </div>

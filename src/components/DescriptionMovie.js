@@ -28,7 +28,7 @@ export class DescriptionMovie extends React.Component {
     return (
       <div>
         <h1>Description</h1>
-        <img src={this.state.data.Poster  }></img>
+        <img src={this.state.data.Poster} alt=""></img>
         <p>Title: {this.state.data.Title}</p>
         <p>Country: {this.state.data.Country}</p>
         <p>Actors: {this.state.data.Actors}</p>
