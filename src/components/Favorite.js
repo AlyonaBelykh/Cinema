@@ -24,17 +24,19 @@ export class Favorite extends React.Component {
     });
   }
 
-  addToFavorite(title, data) {
-    this.setState({favorite: true});
-    localStorage.setItem(title, JSON.stringify(data));
+  toggleFavorite(title, data) {
+    if(localStorage.getItem(title)&&this.state.favorite ===true) {
+      localStorage.removeItem(title);
+      this.setState({favorite: false});
+    }else {
+      this.setState({favorite: true});
+      localStorage.setItem(title, JSON.stringify(data));
+    }
   }
 
   render(){
-    if (this.state.title) {
-      console.log(localStorage.getItem(this.state.title), this.state.title)
-    }
     return(
-      <button onClick={() => this.addToFavorite(this.state.title, this.state.data)} className="star">
+      <button onClick={() => this.toggleFavorite(this.state.title, this.state.data)} className="star">
         {
           this.state.favorite ?
             <img src="infavorites.png" className="favorite" alt=""></img>
