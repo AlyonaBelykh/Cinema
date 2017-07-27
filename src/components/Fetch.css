@@ -14,3 +14,9 @@ figure {
     margin-left: -25px;
     top:0; left:25px;
 }
+
+.star {
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}

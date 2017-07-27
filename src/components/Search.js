@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {Select} from './SearchingSelectBox';
 
 export class Search extends React.Component{
@@ -15,6 +16,9 @@ export class Search extends React.Component{
   render() {
     return (
     <div>
+      <Link to={'/favorites'}>
+        <button id="collection">My Collection</button>
+      </Link>
       <h1>Search Video</h1>
       <h3>{this.state.value}</h3>
       <form onSubmit={this.props.onSubmit}>

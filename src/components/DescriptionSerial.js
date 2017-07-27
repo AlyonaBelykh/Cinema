@@ -8,11 +8,11 @@ const img = 'https://image.tmdb.org/t/p/w500';
 export class DescriptionSerial extends React.Component {
   constructor(props) {
     super(props);
-    this.searchByImbdId();
+    this.searchBySerialId();
     this.state = {data: {}}
   }
 
-  searchByImbdId() {
+  searchBySerialId() {
     const id = this.props.match.params.id;
     api(serialPath + id).then(result => {
       this.setState({data: result.data})

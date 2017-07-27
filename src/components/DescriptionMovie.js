@@ -1,6 +1,7 @@
 import React from 'react';
 import {api} from '../api';
 import {Video} from './Video.js';
+import './DescriptionMovie.css';
 const moviePath = '/movie/';
 const img = 'https://image.tmdb.org/t/p/w500';
 const apikey = '&apikey=ec6483bd';
@@ -9,17 +10,19 @@ export class DescriptionMovie extends React.Component {
   constructor(props) {
     super(props);
     this.searchByImbdId();
-    this.state = {data: {}}
+    this.state = {imbdApi: {}, movieDbApi: {}}
   }
 
   searchByImbdId() {
     const id = this.props.match.params.id;
     api(moviePath + id).then(result => {
+      console.log('result',result);
       const imbdId = result.data.imdb_id;
       fetch('http://www.omdbapi.com/?i=' + imbdId + apikey)
         .then(response => response.json())
         .then(data => {
-          this.setState({data: data})
+          console.log('data',data)
+          this.setState({imbdApi:data, movieDbApi:result.data})
         })
     });
   }
@@ -28,13 +31,19 @@ export class DescriptionMovie extends React.Component {
     return (
       <div>
         <h1>Description</h1>
-        <img src={this.state.data.Poster} alt=""></img>
-        <p>Title: {this.state.data.Title}</p>
-        <p>Country: {this.state.data.Country}</p>
-        <p>Actors: {this.state.data.Actors}</p>
-        <p>Plot: {this.state.data.Plot}</p>
-        <p>imdbRating: {this.state.data.imdbRating}</p>
+        <img src={img+this.state.movieDbApi.poster_path} alt=""></img>
+        <p>Title: {this.state.movieDbApi.title }</p>
+        <p>Released Date: {this.state.imbdApi.Released}</p>
+        <p>Country: {this.state.imbdApi.Country}</p>
+        <p>Genres: {(this.state.movieDbApi.genres || []).map(genre=>genre.name).join(', ')}</p>
+        <p>Actors: {this.state.imbdApi.Actors}</p>
+        <p>Plot: {this.state.movieDbApi.overview}</p>
+        <p>IMDB Rating: {this.state.imbdApi.imdbRating}</p>
+        <p>IMDB Votes: {this.state.imbdApi.imdbVotes}</p>
+        <p>Kinopoisk Rating: {this.state.movieDbApi.vote_average}</p>
+        <p>Kinopoisk Votes:{this.state.movieDbApi.vote_count}</p>
         <Video id={this.props.match.params.id} path="/movie/"/>
+        <a href={this.state.movieDbApi.homepage}>Homepage</a>
       </div>
     )
   }
