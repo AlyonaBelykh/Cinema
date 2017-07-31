@@ -1,6 +1,8 @@
 import React from 'react';
 import {api} from '../api';
 import {Video} from './Video.js';
+import {FindIt} from './FindIt';
+import {Favorite} from  './Favorite';
 import './DescriptionMovie.css';
 const moviePath = '/movie/';
 const img = 'https://image.tmdb.org/t/p/w500';
@@ -32,7 +34,8 @@ export class DescriptionMovie extends React.Component {
       <div>
         <h1>Description</h1>
         <img src={img+this.state.movieDbApi.poster_path} alt=""></img>
-        <p>Title: {this.state.movieDbApi.title }</p>
+        <Favorite id={this.props.match.params.id}/>
+        <p>Title: {this.state.movieDbApi.title}</p>
         <p>Released Date: {this.state.imbdApi.Released}</p>
         <p>Country: {this.state.imbdApi.Country}</p>
         <p>Genres: {(this.state.movieDbApi.genres || []).map(genre=>genre.name).join(', ')}</p>
@@ -43,7 +46,8 @@ export class DescriptionMovie extends React.Component {
         <p>Kinopoisk Rating: {this.state.movieDbApi.vote_average}</p>
         <p>Kinopoisk Votes:{this.state.movieDbApi.vote_count}</p>
         <Video id={this.props.match.params.id} path="/movie/"/>
-        <a href={this.state.movieDbApi.homepage}>Homepage</a>
+        <a href={this.state.movieDbApi.homepage} id="collection">Homepage</a>
+        <FindIt title={this.state.movieDbApi.title}/>
       </div>
     )
   }

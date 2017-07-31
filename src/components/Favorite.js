@@ -1,6 +1,8 @@
 import React from 'react';
 import './Fetch.css';
 import {api} from '../api';
+import favorites from './favorites.png';
+import infavorites from './infavorites.png';
 const moviePath = '/movie/';
 
 export class Favorite extends React.Component {
@@ -39,8 +41,8 @@ export class Favorite extends React.Component {
       <button onClick={() => this.toggleFavorite(this.state.title, this.state.data)} className="star">
         {
           this.state.favorite ?
-            <img src="infavorites.png" className="favorite" alt=""></img>
-            : <img src="favorites.png" className="favorite" alt=""></img>
+            <img src={infavorites} className="favorite" alt=""></img>
+            : <img src={favorites} className="favorite" alt=""></img>
         }
       </button>
     )

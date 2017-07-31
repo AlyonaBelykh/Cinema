@@ -1,6 +1,7 @@
 import React from 'react';
 import {api} from '../api';
 import {Video} from './Video.js';
+import {FindIt} from './FindIt';
 import './DescriptionSerial.css';
 const serialPath = '/tv/';
 const img = 'https://image.tmdb.org/t/p/w500';
@@ -29,7 +30,8 @@ export class DescriptionSerial extends React.Component {
         <p>Last air date: {this.state.data.last_air_date}</p>
         <p>Plot: {this.state.data.overview}</p>
         <Video id={this.props.match.params.id} path='/tv/'/>
-        <a href={this.state.data.homepage}>Homepage</a>
+        <a href={this.state.data.homepage} id="collection">Homepage</a>
+        <FindIt title={this.state.data.name}/>
       </div>
     )
   }

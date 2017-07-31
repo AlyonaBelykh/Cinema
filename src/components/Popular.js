@@ -10,12 +10,13 @@ export class Popular extends React.Component {
   constructor(prop){
     super(prop);
     this.loadPopular();
-    this.state = {data: []}
+    this.state = {data: [], page:{}}
   }
 
   loadPopular() {
     api(popularMoviePath).then(response => {
-      this.setState({data: response.data.results})
+      console.log(response.data)
+      this.setState({data: response.data.results, page:response.data})
     })
   }
 
@@ -28,9 +29,7 @@ export class Popular extends React.Component {
               <Link to={'/descriptionMovie/' + item.id}>
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
-              <Favorite id={item.id} />
-
-
+              <Favorite id={item.id}/>
               <figcaption>{item.original_title}</figcaption>
             </figure>
           )
