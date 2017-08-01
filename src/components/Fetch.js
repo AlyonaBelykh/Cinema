@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Search} from './Search';
-import {Popular} from  './Popular';
+import {Paginate} from  './Paginate';
 import {Favorite} from './Favorite';
 import './Fetch.css';
 import {api} from '../api';
@@ -40,7 +40,7 @@ export class Fetch extends React.Component {
         <Search onSubmit={this.loadData}/>
         {
           !this.state.data ?
-            <Popular/>
+            <Paginate/>
             :
           this.state.data.map(item => {
               if (!item.name) {

@@ -1,59 +1,59 @@
-import React from 'react';
-import _ from 'lodash';
-import {api} from  '../api';
-import Pagination from "../components/Pagination";
+import React, { Component } from 'react';
+import { Pagination } from 'react-bootstrap';
+import {api} from '../api';
+import {Popular} from './Popular';
+import './Paginate.css';
 
 const popularMoviePath = '/movie/popular';
 
-export class Paginate extends React.Component {
-  constructor() {
-    super();
-    var exampleItems = _.range(1, 151).map(i => { return { id: i, name: 'Item ' + i }; });
-    console.log("NEED",exampleItems)
-    // an example array of items to be paged
-    // var exampleItems = [];
-    // var array = new Array();
-    // api(popularMoviePath).then(response => {
-    //   _.range(1, 3).map(i => {
-    //     api(popularMoviePath,'&page='+i).then(pagesResults => {
-    //       pagesResults.data.results.map(res  => {
-    //         return array.push({id: res.id ,title: res.title});
-    //       })
-    //     })
-    //   });
-    // })
-    //
-    // console.log(array.length)
-    // array.map((e,i)=>{
-    //   exampleItems.push({idx:i, item: e});
-    // })
-    // console.log("HAVE",exampleItems)
+export  class Paginate extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      exampleItems: exampleItems,
-      pageOfItems: []
+      data: [],
+      currentPageNumber: 1,
+      totalItems: 1,
+      itemsPerPage: 10
     };
+  };
 
-    this.onChangePage = this.onChangePage.bind(this);
+  componentDidMount() {
+    api(popularMoviePath)
+      .then(apiResponse => {
+        this.setState({
+          data: apiResponse.data.results,
+          currentPageNumber: apiResponse.data.page,
+          totalItems: apiResponse.data.total_results,
+          itemsPerPage: apiResponse.data.results.length
+        });
+      });
   }
 
-  onChangePage(pageOfItems) {
-    this.setState({ pageOfItems: pageOfItems });
+  handleSelect(number) {
+    api(popularMoviePath, '&page='+number)
+      .then(apiResponse => {
+        this.setState({
+          data: apiResponse.data.results,
+          currentPageNumber: apiResponse.data.page,
+          totalItems: apiResponse.data.total_results,
+          itemsPerPage: apiResponse.data.results.length
+        });
+      });
   }
 
   render() {
+    let totalPages = Math.ceil(this.state.totalItems / this.state.itemsPerPage);
     return (
       <div>
-        <div className="container">
-          <div className="text-center">
-            <h1>React - Pagination Example with logic like Google</h1>
-            {this.state.pageOfItems.map(item =>
-              <div key={item.id}>{item.name}</div>
-            )}
-            <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
-          </div>
-        </div>
-        <hr/>
-
+        <Popular data={this.state.data}/>
+        <Pagination
+          first
+          last
+          maxButtons={4}
+          bsSize="medium"
+          items={totalPages}
+          activePage={this.state.currentPageNumber}
+          onSelect={this.handleSelect.bind(this)}/>
       </div>
     );
   }
