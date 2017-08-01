@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Pagination } from 'react-bootstrap';
 import {api} from '../api';
 import {Popular} from './Popular';
+import {Favorite} from './Favorite';
+
 import './Paginate.css';
 
 const popularMoviePath = '/movie/popular';
@@ -46,6 +48,7 @@ export  class Paginate extends Component {
     return (
       <div>
         <Popular data={this.state.data}/>
+
         <Pagination
           first
           last

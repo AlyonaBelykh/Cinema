@@ -6,6 +6,7 @@ const img = 'https://image.tmdb.org/t/p/w500';
 export class FavoriteCollection extends React.Component {
   constructor(prop) {
     super(prop);
+
     this.state = {data: []};
   }
 
@@ -20,7 +21,10 @@ export class FavoriteCollection extends React.Component {
     while (i--) {
       values.push(localStorage.getItem(keys[i]));
     }
-    let collection = _.uniq(values);
+     //localStorage.clear()
+      let collection = _.uniq(values);
+    console.log(collection)
+
     let array = [];
     collection.forEach(item => {
       array.push(JSON.parse(item))
@@ -28,9 +32,14 @@ export class FavoriteCollection extends React.Component {
     this.setState({data: array})
   }
 
+  del(){
+    console.log('delete')
+    localStorage.clear()
+  }
   render() {
     return (
       <div>
+        <button onClick={()=>{this.del()}}>Delete All</button>
         {
           this.state.data.map(item =>
             <div>
@@ -44,5 +53,4 @@ export class FavoriteCollection extends React.Component {
       </div>
     )
   }
-
 }
