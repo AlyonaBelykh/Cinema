@@ -59,7 +59,6 @@ export class Fetch extends React.Component {
                     <Link to={'/descriptionSerial/' + item.id}>
                       <img src={img + item.poster_path} className="poster" alt=""></img>
                     </Link>
-                    <Favorite id={item.id}/>
                   <figcaption>{item.name}</figcaption>
                 </figure>
                 )

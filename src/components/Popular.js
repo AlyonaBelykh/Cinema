@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Favorite} from './Favorite';
+import {Paginate} from './Paginate';
 import './Fetch.css';
 import {api} from '../api';
 const popularMoviePath = '/movie/popular';
@@ -15,7 +16,6 @@ export class Popular extends React.Component {
 
   loadPopular() {
     api(popularMoviePath).then(response => {
-      console.log(response.data)
       this.setState({data: response.data.results, page:response.data})
     })
   }
@@ -34,6 +34,7 @@ export class Popular extends React.Component {
             </figure>
           )
         }
+        <Paginate/>
       </div>
     )
   }
