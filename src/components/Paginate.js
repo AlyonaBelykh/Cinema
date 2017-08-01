@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Pagination } from 'react-bootstrap';
 import {api} from '../api';
 import {Popular} from './Popular';
-import {Favorite} from './Favorite';
 
 import './Paginate.css';
 

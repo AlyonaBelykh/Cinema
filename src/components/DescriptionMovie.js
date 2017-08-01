@@ -6,7 +6,7 @@ import {Favorite} from  './Favorite';
 import './DescriptionMovie.css';
 const moviePath = '/movie/';
 const img = 'https://image.tmdb.org/t/p/w500';
-const apikey = '&apikey=ec6483bd';
+const apikey = '&apikey=c6c0355';
 
 export class DescriptionMovie extends React.Component {
   constructor(props) {
