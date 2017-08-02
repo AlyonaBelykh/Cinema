@@ -49,7 +49,7 @@ export class Fetch extends React.Component {
                   <Link to={'/descriptionMovie/' + item.id}>
                     <img src={img + item.poster_path} className="poster" alt=""></img>
                   </Link>
-                   <Favorite id={item.id}/>
+                   <Favorite id={item.id} show="movie"/>
                   <figcaption>{item.original_title}</figcaption>
                 </figure>
                )
@@ -59,7 +59,8 @@ export class Fetch extends React.Component {
                     <Link to={'/descriptionSerial/' + item.id}>
                       <img src={img + item.poster_path} className="poster" alt=""></img>
                     </Link>
-                  <figcaption>{item.name}</figcaption>
+                    <Favorite id={item.id} show="serial"/>
+                    <figcaption>{item.name}</figcaption>
                 </figure>
                 )
               }

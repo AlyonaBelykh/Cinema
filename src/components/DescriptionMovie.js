@@ -18,12 +18,10 @@ export class DescriptionMovie extends React.Component {
   searchByImbdId() {
     const id = this.props.match.params.id;
     api(moviePath + id).then(result => {
-      console.log('result',result);
       const imbdId = result.data.imdb_id;
       fetch('http://www.omdbapi.com/?i=' + imbdId + apikey)
         .then(response => response.json())
         .then(data => {
-          console.log('data',data)
           this.setState({imbdApi:data, movieDbApi:result.data})
         })
     });
@@ -34,7 +32,7 @@ export class DescriptionMovie extends React.Component {
       <div>
         <h1>Description</h1>
         <img src={img+this.state.movieDbApi.poster_path} alt=""></img>
-        <Favorite id={this.props.match.params.id}/>
+        <Favorite id={this.props.match.params.id} show="movie"/>
         <p>Title: {this.state.movieDbApi.title}</p>
         <p>Released Date: {this.state.imbdApi.Released}</p>
         <p>Country: {this.state.imbdApi.Country}</p>

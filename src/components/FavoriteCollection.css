@@ -1,0 +1,24 @@
+#delete {
+    border-radius: 50%;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 16px;
+}
+
+.movie {
+    float: left;
+    margin-left: 25em;
+    margin-top: 7em;
+}
+
+.serial {
+    float: right;
+    margin-right: 25em;
+    margin-top: 7em;
+}
+

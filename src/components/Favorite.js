@@ -4,32 +4,36 @@ import {api} from '../api';
 import favorites from './favorites.png';
 import infavorites from './infavorites.png';
 const moviePath = '/movie/';
+const serialPath = '/tv/';
 
 export class Favorite extends React.Component {
   constructor(props) {
     super(props);
     this.state = {title: '', favorite: false};
   }
+
   componentDidMount() {
-    var id = this.props.id;
-    api(moviePath + id).then(result => {
+    let id = this.props.id;
+    let url = this.props.show === 'movie' ? moviePath : serialPath;
+    api(url + id).then(result => {
       this.setState({
-        title: result.data.title,
+        title: result.data.title || result.data.name,
         data: result.data,
-        favorite: localStorage.getItem(result.data.title) !== null
+        favorite: localStorage.getItem(result.data.id) !== null
       });
-    });
+    })
   }
 
   componentWillReceiveProps(nextProps) {
-      var id = nextProps.id;
-      api(moviePath + id).then(result => {
-        this.setState({
-          title: result.data.title,
-          data: result.data,
-          favorite: localStorage.getItem(result.data.title) !== null
-        });
+    var id = nextProps.id;
+    let url = this.props.show === 'movie' ? moviePath : serialPath;
+    api(url + id).then(result => {
+      this.setState({
+        title: result.data.title || result.data.name,
+        data: result.data,
+        favorite: localStorage.getItem(result.data.id) !== null
       });
+    });
   }
 
   toggleFavorite(title, data) {
