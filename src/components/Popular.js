@@ -13,15 +13,29 @@ export class Popular extends React.Component {
     return (
       <div>
         {
-          this.props.data.map(item =>
-            <figure>
-              <Link to={'/descriptionMovie/' + item.id} target="_blank">
-                <img src={img + item.poster_path} className="poster" alt=""></img>
-              </Link>
-              <Favorite id={item.id} />
-              <figcaption>{item.original_title}</figcaption>
-            </figure>
-          )
+          this.props.data.map(item => {
+            if (!item.name) {
+              return (
+                <figure>
+                  <Link to={'/descriptionMovie/' + item.id} target="_blank">
+                    <img src={img + item.poster_path} className="poster" alt=""></img>
+                  </Link>
+                  <Favorite id={item.id} show="movie"/>
+                  <figcaption>{item.original_title}</figcaption>
+                </figure>
+              )
+            } else {
+              return (
+                <figure>
+                  <Link to={'/descriptionSerial/' + item.id} target="_blank">
+                    <img src={img + item.poster_path} className="poster" alt=""></img>
+                  </Link>
+                  <Favorite id={item.id} show="serial"/>
+                  <figcaption>{item.name}</figcaption>
+                </figure>
+              )
+            }
+          })
         }
       </div>
     )

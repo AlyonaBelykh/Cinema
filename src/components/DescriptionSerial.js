@@ -5,6 +5,7 @@ import {FindIt} from './FindIt';
 import {Favorite} from  './Favorite';
 
 const serialPath = '/tv/';
+const img = 'https://image.tmdb.org/t/p/w500';
 
 export class DescriptionSerial extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export class DescriptionSerial extends React.Component {
     return (
       <div>
         <h1>Description</h1>
-        <img src={this.state.data.poster_path} alt=""></img>
+        <img src={img+this.state.data.poster_path} alt=""></img>
         <Favorite id={this.props.match.params.id} show="serial"/>
         <p>Title: {this.state.data.name}</p>
         <p>First air date: {this.state.data.first_air_date}</p>
