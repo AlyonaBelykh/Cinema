@@ -2,12 +2,21 @@ li {
     display: inline;
     margin: 2px;
     padding: 8px;
+    color: #e7e7e7;
 }
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
+
 li.active {
-    background-color: #ffc94c;
+    background-color: black;
+    color: #e7e7e7;
+}
+
+a{
+    color: #e7e7e7;
+    text-decoration: none;
 }

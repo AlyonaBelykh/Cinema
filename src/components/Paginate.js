@@ -7,7 +7,9 @@ import {Popular} from './Popular';
 import './Paginate.css';
 
 const popularMoviePath = '/movie/popular';
-const topRated = '/movie/top_rated';
+const topRatedMovie = '/movie/top_rated';
+const popularTvPath = '/tv/popular';
+const topRatedTv = '/tv/top_rated';
 
 export class Paginate extends Component {
   constructor(props) {
@@ -35,9 +37,8 @@ export class Paginate extends Component {
 
   topRared(index){
     if (index === 1) {
-      api(topRated)
+      api(topRatedMovie)
         .then(apiResponse => {
-        console.log(apiResponse)
           this.setState({
             data: apiResponse.data.results,
             currentPageNumber: apiResponse.data.page,
@@ -45,12 +46,32 @@ export class Paginate extends Component {
             itemsPerPage: apiResponse.data.results.length
           });
         })
-    }else{
-      this.handleSelect(1)
+    }else if(index === 2) {
+      api(popularTvPath)
+        .then(apiResponse => {
+          this.setState({
+            data: apiResponse.data.results,
+            currentPageNumber: apiResponse.data.page,
+            totalItems: apiResponse.data.total_results,
+            itemsPerPage: apiResponse.data.results.length
+          });
+        })
+    }else if(index === 3){
+      api(topRatedTv)
+        .then(apiResponse => {
+          this.setState({
+            data: apiResponse.data.results,
+            currentPageNumber: apiResponse.data.page,
+            totalItems: apiResponse.data.total_results,
+            itemsPerPage: apiResponse.data.results.length
+          });
+        })
+    }else {
+      this.handleSelectMovie(1)
     }
   }
 
-  handleSelect(number) {
+  handleSelectMovie(number) {
     api(popularMoviePath, '&page=' + number)
       .then(apiResponse => {
         this.setState({
@@ -62,8 +83,32 @@ export class Paginate extends Component {
       });
   }
 
-  handleSelectRated(number){
-    api(topRated, '&page=' + number)
+  handleSelectRatedMovie(number){
+    api(topRatedMovie, '&page=' + number)
+      .then(apiResponse => {
+        this.setState({
+          data: apiResponse.data.results,
+          currentPageNumber: apiResponse.data.page,
+          totalItems: apiResponse.data.total_results,
+          itemsPerPage: apiResponse.data.results.length
+        });
+      });
+  }
+
+  handleSelectSerial(number) {
+    api(popularTvPath, '&page=' + number)
+      .then(apiResponse => {
+        this.setState({
+          data: apiResponse.data.results,
+          currentPageNumber: apiResponse.data.page,
+          totalItems: apiResponse.data.total_results,
+          itemsPerPage: apiResponse.data.results.length
+        });
+      });
+  }
+
+  handleSelectRatedSerial(number) {
+    api(topRatedTv, '&page=' + number)
       .then(apiResponse => {
         this.setState({
           data: apiResponse.data.results,
@@ -80,7 +125,10 @@ export class Paginate extends Component {
         <TabList>
           <Tab>Popular Movies</Tab>
           <Tab>Top Rated Movies</Tab>
+          <Tab>Popular TV</Tab>
+          <Tab>Top Rated TV</Tab>
         </TabList>
+
         <TabPanel>
           <Popular data={this.state.data}/>
           <Pagination
@@ -92,7 +140,7 @@ export class Paginate extends Component {
             bsSize="medium"
             items={Math.ceil(this.state.totalItems / this.state.itemsPerPage)}
             activePage={this.state.currentPageNumber}
-            onSelect={this.handleSelect.bind(this)}/>
+            onSelect={this.handleSelectMovie.bind(this)}/>
         </TabPanel>
 
         <TabPanel>
@@ -106,8 +154,37 @@ export class Paginate extends Component {
             bsSize="medium"
             items={Math.ceil(this.state.totalItems / this.state.itemsPerPage)}
             activePage={this.state.currentPageNumber}
-            onSelect={this.handleSelectRated.bind(this)}/>
+            onSelect={this.handleSelectRatedMovie.bind(this)}/>
         </TabPanel>
+
+        <TabPanel>
+          <Popular data={this.state.data}/>
+          <Pagination
+            first
+            last
+            next
+            prev
+            maxButtons={4}
+            bsSize="medium"
+            items={Math.ceil(this.state.totalItems / this.state.itemsPerPage)}
+            activePage={this.state.currentPageNumber}
+            onSelect={this.handleSelectSerial.bind(this)}/>
+        </TabPanel>
+
+        <TabPanel>
+          <Popular data={this.state.data}/>
+          <Pagination
+            first
+            last
+            next
+            prev
+            maxButtons={4}
+            bsSize="medium"
+            items={Math.ceil(this.state.totalItems / this.state.itemsPerPage)}
+            activePage={this.state.currentPageNumber}
+            onSelect={this.handleSelectRatedSerial.bind(this)}/>
+        </TabPanel>
+
       </Tabs>
     );
   }

@@ -2,7 +2,7 @@ figure {
     display: inline-block;
 }
 .poster {
-    width: 300px;
+    width: 280px;
     height: 400px;
     z-index:1;
     top:0; left:0;

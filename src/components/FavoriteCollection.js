@@ -44,14 +44,14 @@ export class FavoriteCollection extends React.Component {
           this.state.data.map(item =>
           !(item.name)?
             <div className="movie">
-              <Link to={'/descriptionMovie/' + item.id}>
+              <Link to={'/descriptionMovie/' + item.id} target="_blank">
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
               <p>{item.title}</p>
             </div>
             :
             <div className="serial">
-              <Link to={'/descriptionSerial/' + item.id}>
+              <Link to={'/descriptionSerial/' + item.id} target="_blank">
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
               <p>{item.name}</p>

@@ -15,10 +15,10 @@ export class Popular extends React.Component {
         {
           this.props.data.map(item =>
             <figure>
-              <Link to={'/descriptionMovie/' + item.id}>
+              <Link to={'/descriptionMovie/' + item.id} target="_blank">
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
-              <Favorite id={item.id} show="movie"/>
+              <Favorite id={item.id} />
               <figcaption>{item.original_title}</figcaption>
             </figure>
           )

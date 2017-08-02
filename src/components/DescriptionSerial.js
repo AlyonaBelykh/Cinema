@@ -3,9 +3,8 @@ import {api} from '../api';
 import {Video} from './Video.js';
 import {FindIt} from './FindIt';
 import {Favorite} from  './Favorite';
-import './DescriptionSerial.css';
+
 const serialPath = '/tv/';
-const img = 'https://image.tmdb.org/t/p/w500';
 
 export class DescriptionSerial extends React.Component {
   constructor(props) {
@@ -25,14 +24,14 @@ export class DescriptionSerial extends React.Component {
     return (
       <div>
         <h1>Description</h1>
-        <img src={img+this.state.data.poster_path} alt=""></img>
+        <img src={this.state.data.poster_path} alt=""></img>
         <Favorite id={this.props.match.params.id} show="serial"/>
         <p>Title: {this.state.data.name}</p>
         <p>First air date: {this.state.data.first_air_date}</p>
         <p>Last air date: {this.state.data.last_air_date}</p>
         <p>Plot: {this.state.data.overview}</p>
         <Video id={this.props.match.params.id} path='/tv/'/>
-        <a href={this.state.data.homepage} id="collection">Homepage</a>
+        <a href={this.state.data.homepage} id="collection" className="link">Homepage</a>
         <FindIt title={this.state.data.name}/>
       </div>
     )
