@@ -1,36 +1,14 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import {Favorite} from './Favorite';
 import './Fetch.css';
 const img = 'https://image.tmdb.org/t/p/w500/';
 
 export class Popular extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {data: [], id:''};
-  // }
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.data !== this.props.data) {
-  //      nextProps.data.map(item => {
-  //       console.log(item.id)
-  //        this.setState({ data: nextProps.data, id:item.id });
-  //     })
-  //
-  //   }
-  //
-  // }
-  //{/*componentDidUpdate(prevState, props) {*/}
-  //   console.log(prevState, this.props)
-  //   if (prevState !== this.props) {
-  //     const array =  this.props.data;
-  //     this.setState({result:array})
-  //
-  //     // let result = [];
-  //     // array.map(item => result.push(this.setState({result:item.id})));
-  //   } else {
-  //     console.log('^^')
-  //   }
-  // }
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
 
   render() {
     return (

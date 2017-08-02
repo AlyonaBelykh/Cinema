@@ -51,6 +51,8 @@ export  class Paginate extends Component {
         <Pagination
           first
           last
+          next
+          prev
           maxButtons={4}
           bsSize="medium"
           items={totalPages}
