@@ -26,7 +26,7 @@ export class Favorite extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     let id = nextProps.id;
-    let url = this.props.show === 'movie' ? moviePath : serialPath;
+    let url = nextProps.show === 'movie' ? moviePath : serialPath;
     api(url + id).then(result => {
       this.setState({
         title: result.data.title || result.data.name,

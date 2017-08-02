@@ -1,5 +1,7 @@
 figure {
-    display: inline-block;
+    display: inline-block; /* Блочный элемент */
+    width: 295px; /* Ширина */
+
 }
 .poster {
     width: 280px;

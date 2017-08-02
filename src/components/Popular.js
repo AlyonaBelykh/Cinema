@@ -14,7 +14,7 @@ export class Popular extends React.Component {
       <div>
         {
           this.props.data.map(item => {
-            if (!item.name) {
+             if (!item.name) {
               return (
                 <figure>
                   <Link to={'/descriptionMovie/' + item.id} target="_blank">
