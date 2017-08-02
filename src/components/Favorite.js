@@ -19,19 +19,19 @@ export class Favorite extends React.Component {
       this.setState({
         title: result.data.title || result.data.name,
         data: result.data,
-        favorite: localStorage.getItem(result.data.id) !== null
+        favorite: localStorage.getItem(result.data.title || result.data.name) !== null
       });
     })
   }
 
   componentWillReceiveProps(nextProps) {
-    var id = nextProps.id;
+    let id = nextProps.id;
     let url = this.props.show === 'movie' ? moviePath : serialPath;
     api(url + id).then(result => {
       this.setState({
         title: result.data.title || result.data.name,
         data: result.data,
-        favorite: localStorage.getItem(result.data.id) !== null
+        favorite: localStorage.getItem(result.data.title || result.data.name) !== null
       });
     });
   }

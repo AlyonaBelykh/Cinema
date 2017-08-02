@@ -34,7 +34,6 @@ export class Paginate extends Component {
   }
 
   topRared(index){
-    console.log('topRared',  index)
     if (index === 1) {
       api(topRated)
         .then(apiResponse => {
