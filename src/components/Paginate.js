@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {Pagination} from 'react-bootstrap';
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
+import React from 'react';
+import { Pagination } from 'react-bootstrap';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { api } from '../api';
+import { Popular } from './Popular';
 import '../../node_modules/react-tabs/style/react-tabs.css'
-import {api} from '../api';
-import {Popular} from './Popular';
 import './Paginate.css';
 
 const popularMoviePath = '/movie/popular';
@@ -11,7 +11,7 @@ const topRatedMovie = '/movie/top_rated';
 const popularTvPath = '/tv/popular';
 const topRatedTv = '/tv/top_rated';
 
-export class Paginate extends Component {
+export class Paginate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

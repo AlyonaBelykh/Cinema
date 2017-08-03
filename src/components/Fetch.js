@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {Search} from './Search';
-import {Paginate} from  './Paginate';
-import {Favorite} from './Favorite';
+import { Link } from 'react-router-dom';
+import { Search } from './Search';
+import { Paginate } from  './Paginate';
+import { Favorite } from './Favorite';
 import './Fetch.css';
 import {api} from '../api';
+
 const searchMoviePath = '/search/movie';
 const searchSerialPath = '/search/tv';
-
 const img = 'https://image.tmdb.org/t/p/w500/';
 
 export class Fetch extends React.Component {

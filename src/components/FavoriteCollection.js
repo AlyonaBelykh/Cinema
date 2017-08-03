@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Favorite} from './Favorite';
 import _ from 'lodash';
 import './FavoriteCollection.css';
+
 const img = 'https://image.tmdb.org/t/p/w500';
 
 export class FavoriteCollection extends React.Component {
@@ -47,6 +49,7 @@ export class FavoriteCollection extends React.Component {
               <Link to={'/descriptionMovie/' + item.id} target="_blank">
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
+              <Favorite id={item.id} show="movie"/>
               <p>{item.title}</p>
             </div>
             :
@@ -54,6 +57,7 @@ export class FavoriteCollection extends React.Component {
               <Link to={'/descriptionSerial/' + item.id} target="_blank">
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
+              <Favorite id={item.id} show="serial"/>
               <p>{item.name}</p>
             </div>
           )

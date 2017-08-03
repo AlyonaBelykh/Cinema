@@ -1,8 +1,8 @@
 import React from 'react';
-import {api} from '../api';
-import {Video} from './Video.js';
-import {FindIt} from './FindIt';
-import {Favorite} from  './Favorite';
+import { api } from '../api';
+import { Video } from './Video.js';
+import { FindIt } from './FindIt';
+import { Favorite } from  './Favorite';
 
 const serialPath = '/tv/';
 const img = 'https://image.tmdb.org/t/p/w500';

@@ -1,8 +1,9 @@
 import React from 'react';
 import './Fetch.css';
-import {api} from '../api';
+import { api } from '../api';
 import favorites from './favorites.png';
 import infavorites from './infavorites.png';
+
 const moviePath = '/movie/';
 const serialPath = '/tv/';
 
