@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Select } from './SearchingSelectBox';
+import {connect} from "react-redux";
 
+@connect()
 export class Search extends React.Component{
   constructor(props) {
     super(props);

@@ -4,11 +4,13 @@ import { Video } from './Video.js';
 import { FindIt } from './FindIt';
 import { Favorite } from  './Favorite';
 import './DescriptionMovie.css';
+import {connect} from "react-redux";
 
 const moviePath = '/movie/';
 const img = 'https://image.tmdb.org/t/p/w500';
 const apikey = '&apikey=c6c0355';
 
+@connect()
 export class DescriptionMovie extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +31,7 @@ export class DescriptionMovie extends React.Component {
   }
 
   render() {
+    console.log('RENDER');
     return (
       <div>
         <h1>Description</h1>

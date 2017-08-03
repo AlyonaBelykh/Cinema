@@ -3,9 +3,11 @@ import {Link} from 'react-router-dom';
 import {Favorite} from './Favorite';
 import _ from 'lodash';
 import './FavoriteCollection.css';
+import {connect} from "react-redux";
 
 const img = 'https://image.tmdb.org/t/p/w500';
 
+@connect()
 export class FavoriteCollection extends React.Component {
   constructor(prop) {
     super(prop);

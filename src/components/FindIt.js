@@ -1,5 +1,7 @@
 import React from 'react';
+import {connect} from "react-redux";
 
+@connect()
 export class FindIt extends React.Component{
 
   getSearchLink() {

@@ -2,9 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Favorite} from './Favorite';
 import './Fetch.css';
+import {connect} from "react-redux";
 
 const img = 'https://image.tmdb.org/t/p/w500/';
 
+@connect()
 export class Popular extends React.Component {
   componentDidUpdate() {
     window.scrollTo(0, 0);

@@ -1,5 +1,5 @@
 export default function reducer(state={
-  data: [],
+  videos: [],
   fetching: false,
   fetched: false,
   error: null,
@@ -7,17 +7,25 @@ export default function reducer(state={
 
   switch (action.type) {
     case "FETCH": {
-      return {...state, fetching: true}
+      return {
+        ...state,
+        fetching: true
+      }
     }
     case "FETCH_REJECTED": {
-      return {...state, fetching: false, error: action.payload}
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
+      }
     }
     case "FETCH_FULFILLED": {
+      console.log(action.payload)
       return {
         ...state,
         fetching: false,
         fetched: true,
-        data: action.payload,
+        videos: action.payload,
       }
     }
   }

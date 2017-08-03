@@ -5,12 +5,14 @@ import { api } from '../api';
 import { Popular } from './Popular';
 import '../../node_modules/react-tabs/style/react-tabs.css'
 import './Paginate.css';
+import {connect} from "react-redux";
 
 const popularMoviePath = '/movie/popular';
 const topRatedMovie = '/movie/top_rated';
 const popularTvPath = '/tv/popular';
 const topRatedTv = '/tv/top_rated';
 
+@connect()
 export class Paginate extends React.Component {
   constructor(props) {
     super(props);

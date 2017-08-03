@@ -5,11 +5,13 @@ import { Paginate } from  './Paginate';
 import { Favorite } from './Favorite';
 import './Fetch.css';
 import {api} from '../api';
+import {connect} from "react-redux";
 
 const searchMoviePath = '/search/movie';
 const searchSerialPath = '/search/tv';
 const img = 'https://image.tmdb.org/t/p/w500/';
 
+@connect()
 export class Fetch extends React.Component {
   constructor(props) {
     super(props);
