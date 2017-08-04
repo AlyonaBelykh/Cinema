@@ -4,3 +4,10 @@ iframe {
     border-left: #c00 2px dotted;
     border-bottom: #c00 4px dotted;
 }
+.classToRight{
+    float:right;
+    border-top: #14cc35 1px dotted;
+    border-right: #14cc35 2px dotted;
+    border-left: #14cc35 2px dotted;
+    border-bottom: #14cc35 4px dotted;
+}

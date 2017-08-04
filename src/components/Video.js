@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 import {connect} from 'react-redux';
 import {api} from '../api';
 import './Video.css';
@@ -8,20 +10,14 @@ import './Video.css';
 }))
 export class Video extends React.Component {
   constructor(){
-    super()
-    const path = document.location.href.split('/')[3]
+    super();
+    const path = document.location.href.split('/')[3];
     const linkId = document.location.href.split('/')[4];
-    console.log(path)
-    this.state={linkId:linkId, path:path}
-
+    this.state={linkId:linkId, path:path, className:''}
   }
 
   loadVideo() {
     const linkForApi = window.location.pathname;
-
-
-
-
     this.props.dispatch(fetchData(linkForApi))
   }
 
@@ -33,9 +29,10 @@ export class Video extends React.Component {
       }
     }
 
+
     const mappedData = videos.map(item =>
       <iframe width="420" height="315" src={"https://www.youtube.com/embed/" + item.key} allowFullScreen
-              title="trailer"></iframe>
+              title="trailer" ></iframe>
     );
 
     return (
@@ -51,7 +48,6 @@ function fetchData(linkForApi) {
     api(linkForApi + '/videos')
       .then((response) => {
         dispatch({type: "FETCH_FULFILLED", payload: response.data.results})
-
       })
       .catch((err) => {
         dispatch({type: "FETCH_REJECTED", payload: err})
