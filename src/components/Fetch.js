@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from "react-redux";
-import { Search } from './Search';
-import { Paginate } from  './Paginate';
-import { Favorite } from './Favorite';
-import { Video } from './Video';
+import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
+import {Search} from './Search';
+import {Paginate} from  './Paginate';
+import {Favorite} from './Favorite';
 import './Fetch.css';
-import { api } from '../api';
+import {api} from '../api';
 
 const searchMoviePath = '/search/movie';
 const searchSerialPath = '/search/tv';
@@ -45,33 +44,29 @@ export class Fetch extends React.Component {
           !this.state.data ?
             <Paginate/>
             :
-          this.state.data.map(item => {
+            this.state.data.map(item => {
               if (!item.name) {
-               return(
-                 <figure>
-                  <Link to={'/movie/' + item.id} target="_blank">
-                    <img src={img + item.poster_path} className="poster" alt=""></img>
-                  </Link>
-                   <Favorite id={item.id} show="movie"/>
-                  <figcaption>{item.original_title}</figcaption>
-                </figure>
-               )
+                return (
+                  <figure>
+                    <Link to={'/movie/' + item.id} target="_blank">
+                      <img src={img + item.poster_path} className="poster" alt=""></img>
+                    </Link>
+                    <Favorite id={item.id} show="movie"/>
+                    <figcaption>{item.original_title}</figcaption>
+                  </figure>
+                )
               } else {
-                return(
+                return (
                   <figure>
                     <Link to={'/tv/' + item.id} target="_blank">
                       <img src={img + item.poster_path} className="poster" alt=""></img>
                     </Link>
                     <Favorite id={item.id} show="serial"/>
                     <figcaption>{item.name}</figcaption>
-                </figure>
+                  </figure>
                 )
               }
             })
-        }
-        {
-         window.location.pathname==='/video'?
-            <Video/>:console.log('')
         }
       </div>
     )

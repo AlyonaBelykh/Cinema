@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { HashRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { api } from '../api';
-import { Video } from './Video.js';
 import { FindIt } from './FindIt';
 import { Favorite } from  './Favorite';
 import './DescriptionMovie.css';
@@ -49,7 +48,6 @@ export class DescriptionMovie extends React.Component {
         <p>IMDB Votes: {this.state.imbdApi.imdbVotes}</p>
         <p>Kinopoisk Rating: {this.state.movieDbApi.vote_average}</p>
         <p>Kinopoisk Votes:{this.state.movieDbApi.vote_count}</p>
-        <Video id={this.props.match.params.id} path="/movie/"/>
         <a href={this.state.movieDbApi.homepage} id="collection">Homepage</a>
         <FindIt title={this.state.movieDbApi.title}/>
       </div>

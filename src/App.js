@@ -6,7 +6,7 @@ import { Fetch } from  './components/Fetch.js';
 import { DescriptionMovie } from './components/DescriptionMovie.js';
 import { DescriptionSerial } from './components/DescriptionSerial.js';
 import { FavoriteCollection } from './components/FavoriteCollection.js';
-import { FetchVideo } from './components/FetchVideo';
+import { Video } from './components/Video';
 
 @connect()
 class App extends React.Component {
@@ -16,13 +16,14 @@ class App extends React.Component {
     <Router>
         <div>
           <Route exact path="/" component={Fetch}/>
-          <Route path="/video" component={Fetch}/>
+          <Route  path="/video" component={Fetch}/>
           <Route path="/movie/:id" component={DescriptionMovie}/>
           <Route path="/tv/:id" component={DescriptionSerial}/>
           <Route path="/favorites" component={FavoriteCollection}/>
         </div>
-      </Router>
+    </Router>
 
+  <Video/>
 
 </div>
 

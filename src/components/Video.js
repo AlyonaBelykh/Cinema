@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {api} from '../api';
-import {Show} from './show';
 import './Video.css';
 
 @connect((store) => ({
@@ -9,7 +8,8 @@ import './Video.css';
 }))
 export class Video extends React.Component {
   loadVideo() {
-    this.props.dispatch(fetchData(this.props))
+    const linkForApi = window.location.pathname;
+    this.props.dispatch(fetchData(linkForApi))
   }
 
   render() {
@@ -35,9 +35,9 @@ export class Video extends React.Component {
   }
 }
 
-function fetchData(props) {
+function fetchData(linkForApi) {
   return function (dispatch) {
-    api(props.path  + props.id   + '/videos')
+    api(linkForApi + '/videos')
       .then((response) => {
         dispatch({type: "FETCH_FULFILLED", payload: response.data.results})
 
