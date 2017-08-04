@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 import { Search } from './Search';
 import { Paginate } from  './Paginate';
 import { Favorite } from './Favorite';
+import { Video } from './Video';
 import './Fetch.css';
-import {api} from '../api';
-import {connect} from "react-redux";
+import { api } from '../api';
 
 const searchMoviePath = '/search/movie';
 const searchSerialPath = '/search/tv';
@@ -48,7 +49,7 @@ export class Fetch extends React.Component {
               if (!item.name) {
                return(
                  <figure>
-                  <Link to={'/descriptionMovie/' + item.id} target="_blank">
+                  <Link to={'/movie/' + item.id} target="_blank">
                     <img src={img + item.poster_path} className="poster" alt=""></img>
                   </Link>
                    <Favorite id={item.id} show="movie"/>
@@ -58,7 +59,7 @@ export class Fetch extends React.Component {
               } else {
                 return(
                   <figure>
-                    <Link to={'/descriptionSerial/' + item.id} target="_blank">
+                    <Link to={'/tv/' + item.id} target="_blank">
                       <img src={img + item.poster_path} className="poster" alt=""></img>
                     </Link>
                     <Favorite id={item.id} show="serial"/>
@@ -66,8 +67,11 @@ export class Fetch extends React.Component {
                 </figure>
                 )
               }
-            }
-          )
+            })
+        }
+        {
+         window.location.pathname==='/video'?
+            <Video/>:console.log('')
         }
       </div>
     )

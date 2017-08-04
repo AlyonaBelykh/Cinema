@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {Favorite} from './Favorite';
+import { Link } from 'react-router-dom';
+import { Favorite } from './Favorite';
 import _ from 'lodash';
 import './FavoriteCollection.css';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 const img = 'https://image.tmdb.org/t/p/w500';
 
@@ -48,7 +48,7 @@ export class FavoriteCollection extends React.Component {
           this.state.data.map(item =>
           !(item.name)?
             <div className="movie">
-              <Link to={'/descriptionMovie/' + item.id} target="_blank">
+              <Link to={'/movie/' + item.id} target="_blank">
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
               <Favorite id={item.id} show="movie"/>
@@ -56,7 +56,7 @@ export class FavoriteCollection extends React.Component {
             </div>
             :
             <div className="serial">
-              <Link to={'/descriptionSerial/' + item.id} target="_blank">
+              <Link to={'/tv/' + item.id} target="_blank">
                 <img src={img + item.poster_path} className="poster" alt=""></img>
               </Link>
               <Favorite id={item.id} show="serial"/>

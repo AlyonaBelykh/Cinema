@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { HashRouter, Link } from 'react-router-dom';
 import { api } from '../api';
 import { Video } from './Video.js';
 import { FindIt } from './FindIt';
 import { Favorite } from  './Favorite';
 import './DescriptionMovie.css';
-import {connect} from "react-redux";
 
 const moviePath = '/movie/';
 const img = 'https://image.tmdb.org/t/p/w500';
@@ -34,6 +35,7 @@ export class DescriptionMovie extends React.Component {
     console.log('RENDER');
     return (
       <div>
+        <Link to="/video"  id="collection">Start Page</Link>
         <h1>Description</h1>
         <img src={img+this.state.movieDbApi.poster_path} alt=""></img>
         <Favorite id={this.props.match.params.id} show="movie"/>

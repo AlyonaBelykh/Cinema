@@ -20,7 +20,7 @@ export class Popular extends React.Component {
              if (!item.name) {
               return (
                 <figure>
-                  <Link to={'/descriptionMovie/' + item.id} target="_blank">
+                  <Link to={'/movie/' + item.id} target="_blank">
                     <img src={img + item.poster_path} className="poster" alt=""></img>
                   </Link>
                   <Favorite id={item.id} show="movie"/>
@@ -30,7 +30,7 @@ export class Popular extends React.Component {
             } else {
               return (
                 <figure>
-                  <Link to={'/descriptionSerial/' + item.id} target="_blank">
+                  <Link to={'/tv/' + item.id} target="_blank">
                     <img src={img + item.poster_path} className="poster" alt=""></img>
                   </Link>
                   <Favorite id={item.id} show="serial"/>
