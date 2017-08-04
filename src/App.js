@@ -16,7 +16,7 @@ class App extends React.Component {
     <Router>
         <div>
           <Route exact path="/" component={Fetch}/>
-          <Route  path="/video" component={Fetch}/>
+          <Route path="/video" component={Fetch}/>
           <Route path="/movie/:id" component={DescriptionMovie}/>
           <Route path="/tv/:id" component={DescriptionSerial}/>
           <Route path="/favorites" component={FavoriteCollection}/>

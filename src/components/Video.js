@@ -4,27 +4,38 @@ import {api} from '../api';
 import './Video.css';
 
 @connect((store) => ({
-    data: store.data
+  data: store.data
 }))
 export class Video extends React.Component {
+  constructor(){
+    super()
+    const path = document.location.href.split('/')[3]
+    const linkId = document.location.href.split('/')[4];
+    console.log(path)
+    this.state={linkId:linkId, path:path}
+
+  }
+
   loadVideo() {
     const linkForApi = window.location.pathname;
+
+
+
+
     this.props.dispatch(fetchData(linkForApi))
   }
 
   render() {
-
     const {data: {videos}} = this.props;
-    console.log('RENDER AAAAA', this.props.data);
-
-    if (!videos || !videos.length) {
-      return <button onClick={this.loadVideo.bind(this)} id="collection">Trailer</button>
+    if ((!videos || !videos.length)) {
+      if ((window.location.pathname === '/video' || window.location.pathname === '/'+this.state.path+'/'+this.state.linkId)) {
+        return <button onClick={this.loadVideo.bind(this)} id="collection">Trailer</button>
+      }
     }
 
-    const mappedData =  videos.map(item =>
+    const mappedData = videos.map(item =>
       <iframe width="420" height="315" src={"https://www.youtube.com/embed/" + item.key} allowFullScreen
               title="trailer"></iframe>
-
     );
 
     return (
