@@ -38,6 +38,7 @@
     "react-dom": "^15.6.1",
     "react-error-overlay": "^1.0.9",
     "react-js-pagination": "^2.1.0",
+    "react-player": "^0.20.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
     "react-tabs": "^1.1.0",

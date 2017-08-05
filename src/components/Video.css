@@ -1,13 +1,15 @@
-iframe {
-    border-top: #c00 1px dotted;
-    border-right: #c00 2px dotted;
-    border-left: #c00 2px dotted;
-    border-bottom: #c00 4px dotted;
-}
+
 .classToRight{
     float:right;
     border-top: #14cc35 1px dotted;
     border-right: #14cc35 2px dotted;
     border-left: #14cc35 2px dotted;
     border-bottom: #14cc35 4px dotted;
+}
+
+.classToHide{
+    border-top: #4a76cc 1px dotted;
+    border-right: #5b59cc 2px dotted;
+    border-left: #5473cc 2px dotted;
+    border-bottom: #4062cc 4px dotted;
 }

@@ -34,7 +34,7 @@ export class DescriptionMovie extends React.Component {
     console.log('RENDER');
     return (
       <div>
-        <Link to="/video"  id="collection">Start Page</Link>
+        <Link to="/video" id="RootNode">Start Page</Link>
         <h1>Description</h1>
         <img src={img+this.state.movieDbApi.poster_path} alt=""></img>
         <Favorite id={this.props.match.params.id} show="movie"/>
