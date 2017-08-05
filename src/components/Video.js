@@ -14,7 +14,7 @@ export class Video extends React.Component {
         super();
         const path = document.location.href.split('/')[3];
         const linkId = document.location.href.split('/')[4];
-        this.state = {linkId: linkId, path: path, className: '', playing: false, myClass: ''};
+        this.state = {linkId: linkId, path: path, className: '', playing: false, currentlyPlay:''};
         //this.showMe();
     }
 
@@ -24,14 +24,7 @@ export class Video extends React.Component {
     }
 
     show(key) {
-        console.log('state', this.state.playing, key)
-        //console.log('refs',this.refs.player.player.container.className)
-        if (this.state.playing) {
-            this.setState({myClass: 'classToRight'})
-            //this.refs.player.player.container.className='classToRight';
-        } else {
-            this.setState({myClass: 'classToHide'})
-        }
+        this.setState({currentlyPlay: key});
     }
 
     render() {
@@ -45,12 +38,11 @@ export class Video extends React.Component {
 
         const mappedData = videos.map((item,i) =>
         <div >
-            {console.log(item.key, i)}
-           <div  className={this.state.myClass} >
+           <div  className={this.state.currentlyPlay === item.key ? 'classToRight' : 'classToHide'} >
                <ReactPlayer ref="player" url={"https://www.youtube.com/embed/" + item.key}
-                         onPlay={() => {this.setState({playing: true, myClass:'classToRight'})}}
-                         onPause={() => this.setState({playing: false, myClass:'classToHide'})}
-                         onReady={()=> {this.setState({playing: false, myClass:'classToHide'})}}
+                         onPlay={() => {this.show(item.key)}}
+                         onPause={() => {this.show('')}}
+                         onReady={()=> {this.setState({playing: false})}}
            />
            </div>
         </div>
