@@ -3,6 +3,7 @@ export default function reducer(state = {
   fetching: false,
   fetched: false,
   error: null,
+  key: ''
 }, action) {
 
   switch (action.type) {
@@ -27,7 +28,12 @@ export default function reducer(state = {
         videos: action.payload
       }
     }
+    case "KEY": {
+      return {
+        ...state,
+        key: action.payload
+      }
+    }
   }
-
   return state
 }

@@ -1,15 +1,16 @@
-
-.classToRight{
-    float:right;
-    border-top: #14cc35 1px dotted;
-    border-right: #14cc35 2px dotted;
-    border-left: #14cc35 2px dotted;
-    border-bottom: #14cc35 4px dotted;
+.hide {
+   display: none;
 }
 
-.classToHide{
-    border-top: #4a76cc 1px dotted;
-    border-right: #5b59cc 2px dotted;
-    border-left: #5473cc 2px dotted;
-    border-bottom: #4062cc 4px dotted;
+.fullScreen {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.default {
+    text-align: center;
 }

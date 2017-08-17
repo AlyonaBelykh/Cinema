@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { api } from '../api';
 import { FindIt } from './FindIt';
 import { Favorite } from  './Favorite';
+import {Video} from './Video'
 import './DescriptionMovie.css';
-
 const moviePath = '/movie/';
 const img = 'https://image.tmdb.org/t/p/w500';
 const apikey = '&apikey=c6c0355';
@@ -31,10 +31,9 @@ export class DescriptionMovie extends React.Component {
   }
 
   render() {
-    console.log('RENDER');
     return (
       <div>
-        <Link to="/video" id="RootNode">Start Page</Link>
+        <Link to="/video" id="RootNode" >Start Page</Link>
         <h1>Description</h1>
         <img src={img+this.state.movieDbApi.poster_path} alt=""></img>
         <Favorite id={this.props.match.params.id} show="movie"/>
@@ -48,6 +47,7 @@ export class DescriptionMovie extends React.Component {
         <p>IMDB Votes: {this.state.imbdApi.imdbVotes}</p>
         <p>Kinopoisk Rating: {this.state.movieDbApi.vote_average}</p>
         <p>Kinopoisk Votes:{this.state.movieDbApi.vote_count}</p>
+        <Video/>
         <a href={this.state.movieDbApi.homepage} id="collection">Homepage</a>
         <FindIt title={this.state.movieDbApi.title}/>
       </div>
