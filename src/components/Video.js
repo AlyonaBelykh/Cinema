@@ -50,8 +50,8 @@ export class Video extends React.Component {
                        volume = {0}
                        />
         {
-          this.props.data.bhide ?
-           <button  className="hideB" onClick={() => this.hide()}>HIDE</button> :
+          this.props.data.bhide && this.state.currentlyPlay === item.key ?
+           <button  className= "hideB"  onClick={() => this.hide()}>HIDE</button> :
           <p></p>
 
         }
