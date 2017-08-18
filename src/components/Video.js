@@ -40,7 +40,7 @@ export class Video extends React.Component {
 
     const mappedData = videos.map((item, i) =>
 
-      <div ref="h" className={this.state.currentlyPlay === item.key ? 'fullScreen' : 'default'}>
+      <div className={this.state.currentlyPlay === item.key ? 'fullScreen' : 'default'}>
 
           <ReactPlayer url={"https://www.youtube.com/embed/" + item.key}
                        onPlay={() => {

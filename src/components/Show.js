@@ -27,7 +27,7 @@ export class Show extends React.Component {
                        this.setState({pause:true})
                      }}
         />
-          <button className="hideB" onClick={()=> this.props.dispatch({type: "KEY", payload: null}) }>Close</button>
+          <button className="hideB" onClick={()=> this.props.dispatch({type: "HIDE", payload: false}) }>Close</button>
         </div>
       )
     }
