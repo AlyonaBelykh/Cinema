@@ -47,7 +47,6 @@ export class Video extends React.Component {
                          this.show(item.key)
                        }}
 
-                       volume = {0}
                        />
         {
           this.props.data.bhide && this.state.currentlyPlay === item.key ?
