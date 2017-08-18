@@ -1,10 +1,3 @@
-DIV {
-    width: 1150px; /* Ширина слоя */
-    margin: 7px; /* Значение отступов */
-    padding: 10px; /* Поля вокруг текста */
-    text-align: center;
-}
-
 figure {
     display: inline-block; /* Блочный элемент */
     width: 295px; /* Ширина */

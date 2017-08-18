@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {api} from '../api';
 import './Video.css';
-import axios from 'axios';
 
 @connect((store) => ({
   data: store.data
@@ -24,29 +22,41 @@ export class Video extends React.Component {
 
   show(key) {
     this.setState({currentlyPlay: key});
-    this.props.dispatch({type: "KEY", payload: key})
-    console.log('key', this.props.data)
+    this.props.dispatch({type: "KEY", payload: key});
+    this.props.dispatch({type: "BUTTONHIDE", payload: true})
+  }
 
+  hide() {
+    this.props.dispatch({type: "HIDE", payload: true})
   }
 
   render() {
     const {data: {videos}} = this.props;
     if ((!videos || !videos.length)) {
       if ((window.location.pathname === '/video' || window.location.pathname === '/' + this.state.path + '/' + this.state.linkId)) {
-        return <button onClick={this.loadVideo.bind(this)} id="trailer">Trailer</button>
+        return <button onClick={this.loadVideo.bind(this)} id="collection">Trailer</button>
       }
     }
 
     const mappedData = videos.map((item, i) =>
-      <div className={this.state.currentlyPlay === item.key ? 'hide' : 'default'}>
+
+      <div ref="h" className={this.state.currentlyPlay === item.key ? 'fullScreen' : 'default'}>
 
           <ReactPlayer url={"https://www.youtube.com/embed/" + item.key}
                        onPlay={() => {
                          this.show(item.key)
                        }}
+
                        volume = {0}
                        />
+        {
+          this.props.data.bhide ?
+           <button  className="hideB" onClick={() => this.hide()}>HIDE</button> :
+          <p></p>
+
+        }
        </div>
+
     );
 
     return (

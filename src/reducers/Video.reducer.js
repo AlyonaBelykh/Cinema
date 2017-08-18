@@ -3,7 +3,9 @@ export default function reducer(state = {
   fetching: false,
   fetched: false,
   error: null,
-  key: ''
+  key: '',
+  hide: false,
+  bhide: false
 }, action) {
 
   switch (action.type) {
@@ -32,6 +34,18 @@ export default function reducer(state = {
       return {
         ...state,
         key: action.payload
+      }
+    }
+    case "HIDE": {
+      return {
+        ...state,
+        hide: action.payload
+      }
+    }
+    case "BUTTONHIDE": {
+      return {
+        ...state,
+        bhide: action.payload
       }
     }
   }
