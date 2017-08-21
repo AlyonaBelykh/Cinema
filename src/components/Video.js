@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 import {connect} from 'react-redux';
+import { findDOMNode } from 'react-dom';
 import {api} from '../api';
 import './Video.css';
 
@@ -12,7 +13,7 @@ export class Video extends React.Component {
     super();
     const path = document.location.href.split('/')[3];
     const linkId = document.location.href.split('/')[4];
-    this.state = {linkId: linkId, path: path, currentlyPlay: ''};
+    this.state = {linkId: linkId, path: path, currentlyPlay: '', played: 0, playing:false};
   }
 
   loadVideo() {
@@ -21,13 +22,26 @@ export class Video extends React.Component {
   }
 
   show(key) {
-    this.setState({currentlyPlay: key});
+    this.setState({currentlyPlay: key, playing:true});
     this.props.dispatch({type: "KEY", payload: key});
     this.props.dispatch({type: "BUTTONHIDE", payload: true})
+
+  }
+
+  onSeekChange = e => {
+    this.setState({ played: parseFloat(e.target.value)})
+  }
+
+  onProgress = state => {
+    if (!this.state.seeking) {
+      this.setState(state)
+    }
+    this.props.dispatch({type: "TIME", payload: this.state.played})
   }
 
   hide() {
     this.props.dispatch({type: "HIDE", payload: true})
+    this.setState( {playing:false} );
   }
 
   render() {
@@ -40,20 +54,30 @@ export class Video extends React.Component {
 
     const mappedData = videos.map((item, i) =>
 
-      <div className={this.state.currentlyPlay === item.key ? 'fullScreen' : 'default'}>
+      <div  className={this.state.currentlyPlay === item.key ? 'fullScreen' : 'default'}>
 
           <ReactPlayer url={"https://www.youtube.com/embed/" + item.key}
+                       ref={player => { this.player = player }}
+                       controls="true"
                        onPlay={() => {
                          this.show(item.key)
                        }}
-
+                       playing ={ this.state.currentlyPlay === item.key ? this.state.playing : false}
+                       onProgress={this.onProgress}
                        />
+            <input
+              type='range' min={0} max={1} step='any'
+              value={this.state.played}
+              className="hide"
+              onChange={this.onSeekChange}
+            />
+
         {
           this.props.data.bhide && this.state.currentlyPlay === item.key ?
-           <button  className= "hideB"  onClick={() => this.hide()}>HIDE</button> :
+           <button  className= "hideB"  onClick={() => this.hide()}>Minimize</button> :
           <p></p>
+         }
 
-        }
        </div>
 
     );

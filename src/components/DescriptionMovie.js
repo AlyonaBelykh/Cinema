@@ -8,7 +8,7 @@ import {Video} from './Video'
 import './DescriptionMovie.css';
 const moviePath = '/movie/';
 const img = 'https://image.tmdb.org/t/p/w500';
-const apikey = '&apikey=c6c0355';
+//const apikey = '&apikey=c6c0355';
 
 @connect()
 export class DescriptionMovie extends React.Component {

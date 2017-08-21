@@ -10,7 +10,7 @@ import './Show.css';
 export class Show extends React.Component {
   constructor(){
     super();
-    this.state={pause:false}
+    this.state={duration:0}
   }
 
   render() {
@@ -18,18 +18,33 @@ export class Show extends React.Component {
       return (<p></p>)
     }else  {
       return (
-        <div className={this.state.pause === false ? "right" : "right"}>
+        <div className="right">
 
-        <ReactPlayer url={"https://www.youtube.com/embed/" + this.props.data.key}
+        <ReactPlayer url={"https://www.youtube.com/embed/" + this.props.data.key+'?t='+ Math.round(this.state.duration*this.props.data.time)}
                      controls="true"
                      playing
-                     onPause={() => {
-                       this.setState({pause:true})
-                     }}
+                     onDuration={duration => this.setState({ duration })}
+
         />
+
           <button className="hideB" onClick={()=> this.props.dispatch({type: "HIDE", payload: false}) }>Close</button>
         </div>
       )
     }
   }
 }
+// function format (seconds) {
+//   const date = new Date(seconds * 1000)
+//   const hh = date.getUTCHours()
+//   const mm = date.getUTCMinutes()
+//   const ss = pad(date.getUTCSeconds())
+//
+//   if (hh) {
+//     return `${hh}:${pad(mm)}:${ss}`
+//   }
+//   return `${mm}:${ss}`
+// }
+//
+// function pad (string) {
+//   return ('0' + string).slice(-2)
+// }

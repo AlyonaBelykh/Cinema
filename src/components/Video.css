@@ -23,3 +23,7 @@
 .default {
    margin-left: 10%;
 }
+
+.hide {
+    display: none;
+}

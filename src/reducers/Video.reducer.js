@@ -5,7 +5,8 @@ export default function reducer(state = {
   error: null,
   key: '',
   hide: false,
-  bhide: false
+  bhide: false,
+  time: 0
 }, action) {
 
   switch (action.type) {
@@ -46,6 +47,12 @@ export default function reducer(state = {
       return {
         ...state,
         bhide: action.payload
+      }
+    }
+    case "TIME": {
+      return{
+        ...state,
+        time: action.payload
       }
     }
   }
