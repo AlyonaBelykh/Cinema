@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+
 import {connect} from 'react-redux';
-import { findDOMNode } from 'react-dom';
+
 import {api} from '../api';
 import './Video.css';
 

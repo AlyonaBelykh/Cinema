@@ -55,6 +55,8 @@ export default function reducer(state = {
         time: action.payload
       }
     }
+    default:
+    //
   }
   return state
 }
